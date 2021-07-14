@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Font 'Montserrat' by Google-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+	<!--MyCSS-->
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css" />
+
+    <!--Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- MATERIALIZE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    
+    <!-- FAVICON -->
+    <link
+      rel="icon"
+      href="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
+      type="image/png"
+    />
+
+    <title>Benvenuto!</title>
+
+  </head>
+  <body>
+	<!--Overlay Caricamento-->
+	<div id="overlay"></div>
+	<div id="boxLoader">
+		<!--Spinner-->
+		<div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
+	</div>
+	
+    <div class="row"></div>
+    <!--per spazio-->
+    <div class="row">
+      <div class="col s3"></div>
+      <div class="col s6">
+        <div class="card">
+          <div class="card-content black-text">
+            <i class="large material-icons teal-text">account_circle</i>
+            <span class="card-title"
+              ><h3 class="teal-text">Benvenuto!</h3></span
+            >
+            <p class="teal-text">Inserisci le credenziali per l'accesso</p>
+            <div class="row">
+              <ul class="tabs">
+                <li class="tab">
+                  <a class="teal-text" href="#login"><h6>Login</h6></a>
+                </li>
+                <li class="tab active">
+                  <a class="teal-text" href="#registrati"
+                    ><h6>Registrati</h6></a
+                  >
+                </li>
+              </ul>
+              <!--Alert-->
+              <div
+                id="alertSuccess"
+                class="alert card-panel light-green lighten-2"
+                role="alert"
+                th:text="${success}"
+                th:if="${success}"
+              >
+                	<i class="fas fa-check-circle"></i>
+                  	<button type="button" class="close" data-dismiss="alert">x</button>
+              </div>
+              <div
+                id="alertUserIsPresent"
+                class=" alert card-panel red lighten-2"
+                role="alert"
+                th:text="${userIsPresent}"
+                th:if="${userIsPresent}"
+              >
+                <i class="material-icons left white-text">task_alt</i>
+                  <button type="button" class="close" data-dismiss="alert">x</button>
+              </div>
+              <div
+                id="alertError"
+                class="alert card-panel red lighten-2"
+                role="alert"
+                th:text="${error}"
+                th:if="${error}"
+              >
+                 <button type="button" class="close" data-dismiss="alert">x</button>
+              </div>
+              <!--/ Alert-->
+
+              <!--FORM LOGIN-->
+              <div href="login" id="login">
+                <form>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <i class="material-icons prefix teal-text">email</i>
+                      <input id="email" type="email" class="validate" data-length="10" required />
+                      <label for="email">Email</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <i class="material-icons prefix teal-text">lock</i>
+                      <input id="password" type="password" class="validate" data-length="#" required/>
+                      <label for="textarea2">Password</label>
+                    </div>
+                  </div>
+                  <div id="buttonsLogin" class="row">
+                    <button class="waves-effect waves-light btn-large">
+						<i class="material-icons right white-text">login</i>
+                      Login
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <!--FORM REGISTRAZIONE-->
+              <div id="registrati">
+                <div class="row">
+                  <form
+                    th:action="@{/vsan/myprofileapp/registerUser}"
+                    th:method="POST"
+                    th:object="${user}"
+                    class="col s12"
+                    id="registrationForm"
+                  >
+                    <div class="row">
+                      <div class="input-field col s5">
+                        <i class="material-icons prefix teal-text">person</i>
+                        <input
+                          id="name"
+                          type="text"
+                          class="validate"
+                          th:field="*{name}"
+						  required
+                        />
+                        <label>Nome</label>
+                      </div>
+                      <div class="input-field col s5">
+                        <i class="material-icons prefix teal-text"
+                          >person_outline</i
+                        >
+                        <input
+                          id="cognome"
+                          type="text"
+                          class="validate"
+                          th:field="*{lastname}"
+						  required
+                        />
+                        <label>Cognome</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s5">
+                        <i class="material-icons prefix teal-text"
+                          >mail_outline</i
+                        >
+                        <input
+                          id="emailRegistration"
+                          type="email"
+                          class="validate"
+                          th:field="*{email}"
+						  required
+                        />
+                        <label>Email</label>
+                      </div>
+                      <div class="input-field col s5">
+                        <i class="material-icons prefix teal-text">lock_open</i>
+                        <input
+                          id="passwordRegistration"
+                          type="password"
+                          class="validate"
+                          th:field="*{password}"
+						  required
+                        />
+                        <label>Password</label>
+                      </div>
+                    </div>
+                    <div id="buttonsRegister" class="row">
+                      <button
+                        id="registerButton"
+                        class="waves-effect waves-light btn-large"
+                        type="submit"
+                      >
+                        <i class="material-icons right">send</i>
+                        Registrati
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s3"></div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:src="@{/js/login.js}"></script>
+  </body>
+</html>

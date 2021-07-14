@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@200&display=swap");
+
+.brand-logo {
+  font-family: "Indie Flower", cursive;
+}
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: medium !important;
+  background-color: #4db6ac;
+}
+
+.card {
+  border-radius: 23px !important;
+  box-shadow: 5px 10px 18px #424242 !important;
+  text-align: center !important;
+}
+
+div.card-panel {
+  border-radius: 23px !important;
+  box-shadow: 5px 7px 10px #b1b0b0 !important;
+  text-align: center !important;
+  color: white !important;
+}
+
+.row {
+  text-align: center !important;
+  margin-top: 20px;
+}
+
+div #login {
+  margin-bottom: 10% !important;
+  margin-left: 7% !important;
+  margin-right: 5% !important;
+}
+
+div #registrati {
+  margin-bottom: 10% !important;
+  margin-left: 7% !important;
+  margin-right: 5% !important;
+}
+
+div #buttonsLogin {
+  margin-left: 2% !important;
+  margin-right: 17% !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+div #buttonsRegister {
+  margin-left: 2% !important;
+  margin-right: 17% !important;
+  font-family: "Montserrat", sans-serif !important;
+}
+
+.tabs .tab a {
+  color: rgba(38, 166, 154, 0.7) !important;
+}
+
+.tabs .tab a:hover {
+  color: #26a69a !important;
+}
+
+.tabs .tab a:focus.active {
+  color: #26a69a !important;
+  background-color: rgba(38, 166, 154, 0.2) !important;
+  
+}
+
+.tabs .indicator {
+  background-color: #26a69a !important;
+}
+
+
+#loading-bar-spinner.spinner {
+    left: 40%;
+    margin-left: -10px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 100px;
+    height: 100px;
+    border:  solid 10px transparent;
+    border-top-color:  #FFFFF0 !important;
+    border-left-color: #FFFFF0 !important;
+    border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+#overlay {
+    background: rgb(72, 72, 72);
+    position: fixed;
+    display: none;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 98;
+    opacity: .9;
+    filter: alpha(opacity=90);
+    filter: "alpha(opacity=90)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+}
+
+#boxLoader {
+    z-index: 99;
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -304px;
+    margin-top: -204px;
+    width: 600px;
+    height: 400px;
+    border: none;
+}
+
+.alert {
+	font-size: medium !important;
+	font-weight: bold !important;
+	color: white !important;
+}

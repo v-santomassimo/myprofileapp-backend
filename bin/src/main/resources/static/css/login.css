@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@200&display=swap");
+
+.brand-logo {
+  font-family: "Indie Flower", cursive;
+}
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: medium !important;
+  background-color: #4db6ac;
+}
+
+.card {
+  border-radius: 23px !important;
+  box-shadow: 5px 10px 18px #424242 !important;
+  text-align: center !important;
+}
+
+.row {
+  text-align: center !important;
+  margin-top: 20px;
+}
+
+div #login {
+  margin-bottom: 10% !important;
+  margin-left: 7% !important;
+  margin-right: 5% !important;
+}
+
+div #registrati {
+  margin-bottom: 10% !important;
+  margin-left: 7% !important;
+  margin-right: 5% !important;
+}
+
+div #buttonsLogin {
+  margin-left: 2% !important;
+  margin-right: 17% !important;
+}
+
+div #buttonsRegister {
+  margin-left: 2% !important;
+  margin-right: 17% !important;
+}
+
+.tabs .tab a {
+  color: rgba(38, 166, 154, 0.7) !important;
+}
+
+.tabs .tab a:hover {
+  color: #26a69a !important;
+}
+
+.tabs .tab a:focus.active {
+  color: #26a69a !important;
+  background-color: rgba(38, 166, 154, 0.2) !important;
+  
+}
+
+.tabs .indicator {
+  background-color: #26a69a !important;
+}
+
+/*.tabs .tab a {
+  color: #00acc1 !important;
+}
+.tabs .tab a:hover,
+.tabs .tab a.active {
+  background-color: transparent !important;
+  color: #008b9b !important;
+}
+.tabs .tab.disabled a,
+.tabs .tab.disabled a:hover {
+  color: rgba(102, 147, 153, 0.7) !important;
+}
+.tabs .indicator {
+  background-color: #009bad !important;
+}/*
