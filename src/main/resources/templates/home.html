@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Font 'Montserrat' by Google-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+    <!--MyCSS-->
+    <link th:href="@{/css/home.css}" rel="stylesheet" type="text/css" />
+
+    <!--Icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- MATERIALIZE CSS-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- BOOTSTRAP CSS-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- FAVICON -->
+    <link
+      rel="icon"
+      href="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
+      type="image/png"
+    />
+
+    <title>MyProfile App</title>
+  </head>
+  <body>
+    <!--NAVBAR-->
+    <nav>
+      <div class="nav-wrapper white">
+        <a href="#!" class="brand-logo teal-text"
+          ><i id="iconProfile" class="material-icons left teal-text"
+            >account_circle</i
+          ></a
+        >
+
+        <ul class="right hide-on-med-and-down">
+          <li class="ricerca">
+            <form>
+              <input
+                class="searchBar"
+                id="search"
+                type="search"
+                placeholder="      Cerca..."
+              />
+            </form>
+          </li>
+          <li>
+            <a href="sass.html"
+              ><i class="material-icons teal-text">person</i></a
+            >
+          </li>
+          <li>
+            <a href="badges.html">
+              <i class="material-icons teal-text">notifications</i></a
+            >
+            <!--quando arriva una notifica, compare il badge e l'icona diventa rossa;-->
+          </li>
+          <li>
+            <a><span class="badge">4</span></a>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+    </nav>
+    <!--/NAVBAR-->
+
+    <div class="container overflow-hidden">
+      <div class="row justify-content-center">
+        <div
+          class="
+            col-3 col-sm-9 col-lg-3 col-md-5
+            d-none d-sm-block d-sm-none d-md-block
+          "
+        >
+          <div class="card mb-5">
+            <img
+              id="profileImg"
+              alt="profileUserImg"
+              src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+            />
+            <p id="userName">Nome Utente</p>
+
+            <p class="mb-5">
+              Flex lines are filled with items and placed into the container.
+            </p>
+          </div>
+        </div>
+        <div
+          class="
+            col-7 col-sm-10 col-xs-10 col-lg-7 col-md-10
+            justify-content-center
+          "
+        >
+          <div class="card mb-4">
+            <div class="card-header">Scrivi post</div>
+            <form action="">
+              <div class="input-field col s12">
+                <textarea
+                  id="newPost"
+                  class="materialize-textarea"
+                  type="text"
+                  placeholder="A cosa stai pensando?"
+                ></textarea>
+                <button
+                  class="btn waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                >
+                  Condividi
+                  <i class="material-icons right white-text">send</i>
+                </button>
+                <button
+                  class="btn waves-effect waves-light grey lighten-2 black-text"
+                  type="submit"
+                  name="action"
+                >
+                  Cancella
+                  <i class="material-icons right black-text">arrow_back</i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-12">
+            <!--Post-->
+            <div class="card mb-4">
+              <p id="friendNamePost" text="Friend Name">
+                <img
+                  id="profileimg-friendpost"
+                  alt="profileUserImg"
+                  src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+                />
+                Friend Name
+              </p>
+              <div class="ml-5 mr-5">
+                Flex lines are filled with items and placed into the container
+                starting on the cross-start side of the flex container and going
+                toward the cross-end side.
+              </div>
+              <div class="card-footer"></div>
+            </div>
+            <!--Post-->
+            <div class="card mb-4">
+              <p id="friendNamePost" text="Friend Name">
+                <img
+                  id="profileimg-friendpost"
+                  alt="profileUserImg"
+                  src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
+                />
+                Friend Name
+              </p>
+              <div class="ml-5 mr-5">
+                Flex lines are filled with items and placed into the container
+                starting on the cross-start side of the flex container and going
+                toward the cross-end side.
+              </div>
+              <div id="buttons" class="card-footer">
+                <button class="waves-effect waves-light btn-small">
+                  <i class="material-icons right white-text"> thumb_up </i> Mi
+                  Piace
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" th:src="@{/js/home.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>

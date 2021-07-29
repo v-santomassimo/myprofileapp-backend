@@ -1,6 +1,5 @@
 package com.vsan.myprofileapp.dao;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +26,7 @@ import lombok.Setter;
 @Setter
 public class User implements UserDetails{
 
-//	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@200&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: medium !important;
+  background-color: #80cbc4 !important;
+}
+
+#iconProfile {
+  padding-left: 30px !important;
+  font-size: 60px !important;
+}
+
+#menu {
+  padding-right: 30px !important;
+}
+
+.badge {
+  border-radius: 50px !important;
+  background-color: #e57373 !important;
+  color: white !important;
+  font-weight: bold;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.searchBar {
+  background-color: rgb(238, 237, 237) !important;
+  background-image: url(//addsearch.com/logo/AAAAAA-20.png);
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+  font-size: 16px !important;
+  border-color: #80cbc4 !important;
+  border-width: 15px;
+  border-radius: 20px !important;
+  display: flex !important;
+  position: relative !important;
+}
+
+.liSearchBar {
+  padding-right: 1150px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  width: fit-content !important;
+  height: 60px !important;
+}
+
+li.ricerca {
+  padding-top: 10px;
+  padding-right: 30px;
+  width: 400px;
+  height: 100px;
+  position: relative;
+}
+
+.card {
+  border-radius: 23px !important;
+  box-shadow: 5px 10px 18px #424242 !important;
+  text-align: center !important;
+}
+
+div.card-panel {
+  border-radius: 23px !important;
+  box-shadow: 5px 7px 10px #b1b0b0 !important;
+  text-align: center !important;
+  color: rgb(7, 7, 7) !important;
+}
+
+.btn {
+  background-color: #26a69a !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+img#profileImg {
+  border: thick;
+  border-radius: 100%;
+  border-color: teal;
+  width: auto;
+  height: auto;
+}
+
+p#userName {
+  font-size: 10mm;
+  font-weight: bold;
+  color: teal;
+  justify-content: center;
+}
+
+p#friendNamePost {
+  font-size: 5mm;
+  height: 70px;
+  font-weight: bold;
+  color: teal;
+  justify-content: center;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-bottom-style: solid;
+  border-color: teal;
+  border-width: thin;
+}
+
+img#profileimg-friendpost {
+  border: thick;
+  border-radius: 100%;
+  border-color: teal;
+  max-width: 63px;
+  max-height: 63px;
+  min-width: 50px;
+  min-height: 50px;
+  justify-content: left;
+}
+
+@media (max-width: 700px) {
+  .row,
+  .col {
+    flex-direction: column !important;
+    width: 100% !important;
+    flex: none !important;
+    -ms-flex-item-align: center !important;
+  }
+}
+
+div.card-header {
+  font-weight: bold;
+  color: teal;
+}

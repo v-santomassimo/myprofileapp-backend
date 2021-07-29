@@ -45,9 +45,10 @@ public class RegistrationService {
 			
 			if(newUserRegistration.isPresent()) {
 				// se esiste, lancio una exception;
-				log.info("Utente già registrato!");
+				log.info("User already present in the system");
 				
 				redirAtt.addFlashAttribute("userIsPresent", "Utente già registrato!");
+				
 				
 			} else {
 				//altrimenti, aggiungo il nuovo utente al db e invio la mail;
@@ -59,7 +60,7 @@ public class RegistrationService {
 				freshUser.setUserLink(idUser);
 				
 				repository.save(freshUser);
-				log.info("Utente aggiunto");
+				log.info("User added correctly");
 				
 				String linkConfirmation = "http://localhost:8080/vsan/myprofileapp/confirm-your-account/user-"+idUser; //aggiungere un token?
 				
@@ -67,9 +68,10 @@ public class RegistrationService {
 				emailModel.put("name", freshUser.getName());
 					
 				if(sendConfirmationEmail(freshUser.getEmail(), emailModel, redirAtt)) {
-					redirAtt.addFlashAttribute("success", "Una mail di conferma è stata inviata all'indirizzo email che ci hai fornito");
+					redirAtt.addFlashAttribute("success", "Grazie per esserti registrato! Riceverai la mail di attivazione all'indirizzo email che ci hai fornito");
+
 				} else {
-					redirAtt.addFlashAttribute("error", "Qualcosa è andato storto");
+					redirAtt.addFlashAttribute("error", "Qualcosa è andato storto. Riprova!");
 				}
 				
 			}
@@ -89,17 +91,17 @@ public class RegistrationService {
 	
 	
 	//chiamo questo service con chiamata @get del link di conferma nella mail;
-	public void enableUser(String idUserLink) {
-
-		//se idUser nel link della mail contiene le iniziali dell'utente, allora confermo l'account;
+	public void enableUser(String idUserLink, RedirectAttributes redAtt) {
 		Optional<User> userLink = repository.findByUserLink(idUserLink);
 		User registeredUser = repository.getByUserLink(idUserLink);
 		
 		if(userLink.isPresent()) {
 			registeredUser.setEnabled(true);
 			log.info("User registration enabled!", idUserLink);
+			redAtt.addFlashAttribute("userEnabled", "Complimenti! Adesso sei parte della community. Effettua il login con le credenziali usate in fase di registrazione.");
 		} else {
 			log.error("Operazione non valida: l'utente "+idUserLink+" non ha effettuato la registrazione");
+			redAtt.addFlashAttribute("userNotEnabled", "Ops! Non ti sei ancora registrato? Fallo adesso!");
 		}
 		
 	}

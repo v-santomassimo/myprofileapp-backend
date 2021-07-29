@@ -1,0 +1,74 @@
+[33mcommit 862aa0f9bc014deb050b380a4e57ecfca3bd7957[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: bhoken94 <github.leers@aleeas.com>
+Date:   Mon Jul 5 09:59:12 2021 +0200
+
+    Ho aggiustato cose che maronne se ti avevo detto di fare. Ho aggiunto
+    altre cose nell'application properties quando cambi l'html thymeleaf
+    puoi semplicemente ricaricare la pagina per vedere i cambiamenti e una
+    classe di configurazione generale per la web app
+
+[33mcommit c3c022bea0e026f8217774c5f1ed4124b863d29c[m
+Author: bhoken94 <github.leers@aleeas.com>
+Date:   Mon Jul 5 09:58:25 2021 +0200
+
+    Ho aggiustato cose che maronne se ti avevo detto di fare. Ho aggiunto
+    altre cose nell'application properties quando cambi l'html thymeleaf
+    puoi semplicemente ricaricare la pagina per vedere i cambiamenti e una
+    classe di configurazione generale per la web app
+
+[33mcommit 0b6981e36b7a2dd294e8900df60dbadb7ff7e62d[m
+Author: bhoken94 <github.leers@aleeas.com>
+Date:   Mon Jul 5 09:53:49 2021 +0200
+
+    Ho aggiustato cose che maronne se ti avevo detto di fare. Ho aggiunto
+    altre cose nell'application properties quando cambi l'html thymeleaf
+    puoi semplicemente ricaricare la pagina per vedere i cambiamenti e una
+    classe di configurazione generale per la web app
+
+[33mcommit 6ea6ac5ac0566f55ee0d4c27abf30de515c6a70d[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Wed Jun 30 12:15:13 2021 +0200
+
+    commit inutile
+
+[33mcommit ce6824ed6d1614b2b1b44354b3b9fd56c668af3b[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Tue Jun 29 10:48:18 2021 +0200
+
+    aggiunti template login e registrazione
+
+[33mcommit 7b4bc248ec4f2483297287d614e0950a482d4aa1[m
+Author: bhoken94 <alessandrasantomassimo@gmail.com>
+Date:   Sun Jun 13 12:17:21 2021 +0200
+
+    varie
+
+[33mcommit c0f5e8a26c20f715eef14dd698ea6f72d55af20b[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Fri Jun 11 16:17:32 2021 +0200
+
+    Spring security abilitato; POST di registrazione abilitata
+
+[33mcommit ea4186b496f024ea29ddff09fab425ba6f31829d[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Thu Jun 10 17:27:05 2021 +0200
+
+    fix registrazione e invio email; rivedere perchè client posta non legge css
+
+[33mcommit 0f344618e807232cd48fb18c5b7d239b8b0967a9[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Wed Jun 9 17:59:33 2021 +0200
+
+    Implementazione funzione registrazione; da fixare
+
+[33mcommit a6e734ee1ad24b339d65097791856d7c72a05657[m
+Author: v-santomassimo <v.santomassimo@outlook.it>
+Date:   Tue Jun 8 17:45:25 2021 +0200
+
+    Creazione repository, dao e primo service; creazione entities
+
+[33mcommit 3041eb53952ed01ced6e2db99a32db29c55db1c1[m
+Author: bhoken94 <alessandrasantomassimo@gmail.com>
+Date:   Sat Jun 5 16:22:44 2021 +0200
+
+    first commit

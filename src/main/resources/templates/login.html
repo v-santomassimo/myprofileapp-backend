@@ -18,12 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
     
     <!-- FAVICON -->
-    <link
-      rel="icon"
-      href="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
-      type="image/png"
-    />
-
+    <link rel="icon" href="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png" type="image/png"/>
+  
     <title>Benvenuto!</title>
 
   </head>
@@ -43,9 +39,9 @@
         <div class="card">
           <div class="card-content black-text">
             <i class="large material-icons teal-text">account_circle</i>
-            <span class="card-title"
-              ><h3 class="teal-text">Benvenuto!</h3></span
-            >
+            <span class="card-title">
+              <h3 class="teal-text">Benvenuto!</h3>
+            </span>
             <p class="teal-text">Inserisci le credenziali per l'accesso</p>
             <div class="row">
               <ul class="tabs">
@@ -53,31 +49,46 @@
                   <a class="teal-text" href="#login"><h6>Login</h6></a>
                 </li>
                 <li class="tab active">
-                  <a class="teal-text" href="#registrati"
-                    ><h6>Registrati</h6></a
-                  >
+                  <a class="teal-text" href="#registrati">
+                    <h6>Registrati</h6></a>
                 </li>
               </ul>
               <!--Alert-->
+			  <div
+                id="alertUserEnabled"
+                class="alert card-panel light-green lighten-2"
+                role="alert"
+                th:text="${userEnabled}"
+                th:if="${userEnabled}"
+              > [[${userEnabled}]]
+                  <i class="material-icons prefix white-text">check_circle</i>
+              </div>
               <div
                 id="alertSuccess"
                 class="alert card-panel light-green lighten-2"
                 role="alert"
-                th:text="${success}"
                 th:if="${success}"
               >
-                	<i class="fas fa-check-circle"></i>
-                  	<button type="button" class="close" data-dismiss="alert">x</button>
+				[[${success}]]
+                  <i class="material-icons left white-text">check_circle</i>
               </div>
               <div
                 id="alertUserIsPresent"
-                class=" alert card-panel red lighten-2"
+                class=" alert card-panel amber lighten-3"
                 role="alert"
-                th:text="${userIsPresent}"
                 th:if="${userIsPresent}"
               >
-                <i class="material-icons left white-text">task_alt</i>
-                  <button type="button" class="close" data-dismiss="alert">x</button>
+				[[${userIsPresent}]]
+                 <i class="material-icons left white-text">warning</i>
+              </div>
+			  <div
+                id="alertUserNotEnabled"
+                class=" alert card-panel red lighten-2"
+                role="alert"
+                th:if="${userNotEnabled}"
+              >
+				 [[${userNotEnabled}]]
+                 <i class="material-icons left white-text">cancel</i>
               </div>
               <div
                 id="alertError"
@@ -85,30 +96,30 @@
                 role="alert"
                 th:text="${error}"
                 th:if="${error}"
-              >
-                 <button type="button" class="close" data-dismiss="alert">x</button>
+              >	[[${error}]]
+                 <i class="material-icons left white-text">error</i>
               </div>
-              <!--/ Alert-->
+              <!--/Alert-->
 
               <!--FORM LOGIN-->
               <div href="login" id="login">
-                <form>
+                <form th:action="@{/vsan/myprofileapp/account/login}" th:method="POST"">
                   <div class="row">
                     <div class="input-field col s10">
                       <i class="material-icons prefix teal-text">email</i>
-                      <input id="email" type="email" class="validate" data-length="10" required />
-                      <label for="email">Email</label>
+                      <input id="email" type="email" class="validate" name ="email" data-length="10" required />
+                      <label>Email</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
                       <i class="material-icons prefix teal-text">lock</i>
-                      <input id="password" type="password" class="validate" data-length="#" required/>
-                      <label for="textarea2">Password</label>
+                      <input id="password" type="password" name="password" class="validate" data-length="#" required/>
+                      <label>Password</label>
                     </div>
                   </div>
                   <div id="buttonsLogin" class="row">
-                    <button class="waves-effect waves-light btn-large">
+                    <button type="submit" class="waves-effect waves-light btn-large">
 						<i class="material-icons right white-text">login</i>
                       Login
                     </button>

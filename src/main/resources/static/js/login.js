@@ -1,19 +1,10 @@
-//BURGER MENU
-document.addEventListener("DOMContentLoaded", function () {
-  var elems = document.querySelectorAll(".sidenav");
-  var instances = M.Sidenav.init(elems);
-});
 
 //TABS
 var el = document.querySelector(".tabs");
 var instance = M.Tabs.init(el, { swipeable: true });
 
 //ALERT CLOSE
-$("#close-alert").click(function () {
-  $("#card-panel").fadeOut("slow", function () {});
-});
-//var el = document.querySelectorAll("#alertSuccess");
-//var instance = M.toast.init(el, { displayLength: 100 });
+$(".alert").delay(4000).fadeOut("slow");
 
 //LOADER
 //$("#registrationForm").submit(function () {

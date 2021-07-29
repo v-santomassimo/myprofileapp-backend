@@ -31,15 +31,28 @@ public class AppController {
 		return "login.html";
 	}
 	
+	@GetMapping("/login")
+	public String getLoginPage(Model model) {
+		model.addAttribute("user", new User());  //passo al form un oggetto vuoto;
+		return "login.html";
+	}
+	
+	@GetMapping("/account/home")
+	public String getHomePage(Model model) {
+		//model.addAttribute("user", new User()); 
+		return "home.html";
+	}
+	
 	@PostMapping("/registerUser")
-	public String registration(@ModelAttribute("user") User newUser, RedirectAttributes redirAtt) {
+	public String registration(@ModelAttribute("user") User newUser, RedirectAttributes redirAtt) { //l'oggetto vuoto che ho passato con la "get" request, viene riempito qui;
 		service.registration(newUser, redirAtt);
 		return "redirect:/vsan/myprofileapp/registration";
 	}
 	
 	@GetMapping("/confirm-your-account/user-{idUserLink}")
-	public void confirmAccount(@PathVariable String idUserLink) {
-		service.enableUser(idUserLink);
+	public String confirmAccount(@PathVariable String idUserLink, RedirectAttributes redirAtt) {
+		service.enableUser(idUserLink, redirAtt);
+		return "redirect:/vsan/myprofileapp/login";
 	}
 
 }
