@@ -19,4 +19,6 @@ public interface AppRepository extends JpaRepository<User, Long> {
 	@Query("SELECT u FROM User u WHERE u.userLink = :userLink")
 	User getByUserLink(@Param("userLink") String userLink);
 	
+	@Query("SELECT u FROM User u WHERE u.email = :email")
+	User getByEmail(@Param("email") String email);
 }
