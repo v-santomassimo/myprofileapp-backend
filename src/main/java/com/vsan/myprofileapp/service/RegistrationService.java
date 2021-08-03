@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +27,9 @@ public class RegistrationService {
 	@Autowired
 	private EmailService email;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	
 	//devo ritornare l'utente registrato?
 	public void registration(User newUser, RedirectAttributes redirAtt) { 
@@ -37,7 +41,7 @@ public class RegistrationService {
 			freshUser.setName(newUser.getName());
 			freshUser.setLastname((newUser.getLastname()));
 			freshUser.setEmail(newUser.getEmail());
-			freshUser.setPassword(newUser.getPassword());
+			freshUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
 			freshUser.setRegistrationDate(registrationDate.toString());
 			
 			//controllo che l'utente non esista già nel db;
