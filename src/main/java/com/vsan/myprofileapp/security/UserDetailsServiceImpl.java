@@ -12,7 +12,7 @@ import com.vsan.myprofileapp.dao.User;
 import com.vsan.myprofileapp.repository.AppRepository;
 
 @Service
-public class UserSecurityService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Autowired
 	private AppRepository repository;

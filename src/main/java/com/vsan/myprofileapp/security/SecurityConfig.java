@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	
 	@Autowired
-	public UserSecurityService userSecurityService;
+	public UserDetailsServiceImpl userDetailService;
 	
 
 	
@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/vsan/myprofileapp/confirm-your-account/*").permitAll()
 			.antMatchers("/templates/*").permitAll()
 			.antMatchers("/static/css/*", "/static/js/*", "/static/img/*").permitAll()
-			.antMatchers("/vsan/myprofileapp/account/home").access("hasRole('USER')")
+			.antMatchers("/vsan/myprofileapp/account/home").hasRole("USER")
 //			.anyRequest().authenticated() //--> se lo aggiungo, non riesco ad accedere se non faccio il login;
 			.and()
 			.formLogin().loginPage("/vsan/myprofileapp/login")
@@ -49,15 +49,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(daoAuthenticationProvider());
-		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
+//		auth.authenticationProvider(daoAuthenticationProvider());
+		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
 	}
 	
 	@Bean
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setPasswordEncoder(passwordEncoder());
-		provider.setUserDetailsService(userSecurityService);
+		provider.setUserDetailsService(userDetailService);
 		
 		return provider;
 	}

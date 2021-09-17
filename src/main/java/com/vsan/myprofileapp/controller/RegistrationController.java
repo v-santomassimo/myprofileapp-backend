@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,8 +61,8 @@ public class RegistrationController {
 	public String login(HttpServletRequest request, RedirectAttributes redir) {
 		HttpSession session = request.getSession(false);
 		String message = "";
-		 if (session != null) {
-//	            message = WebAttributes.AUTHENTICATION_EXCEPTION;  
+		 if (session != null) {;  
+	            System.out.println(WebAttributes.AUTHENTICATION_EXCEPTION);
 			 	message = "Login fallito!";
 	     }
 		 redir.addFlashAttribute("loginFailed", message);
