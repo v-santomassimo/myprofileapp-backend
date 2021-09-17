@@ -43,12 +43,13 @@ public class RegistrationService {
 			freshUser.setEmail(newUser.getEmail());
 			freshUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
 			freshUser.setRegistrationDate(registrationDate.toString());
+			freshUser.setRole("USER");
 			
 			//controllo che l'utente non esista già nel db;
 			Optional<User> newUserRegistration = repository.findByEmail(freshUser.getEmail());
 			
 			if(newUserRegistration.isPresent()) {
-				// se esiste, lancio una exception;
+				// se esiste, lancio messaggio di errore;
 				log.info("User already present in the system");
 				
 				redirAtt.addFlashAttribute("userIsPresent", "Utente già registrato!");
@@ -66,7 +67,7 @@ public class RegistrationService {
 				repository.save(freshUser);
 				log.info("User added correctly");
 				
-				String linkConfirmation = "http://localhost:8080/vsan/myprofileapp/confirm-your-account/user-"+idUser; //aggiungere un token?
+				String linkConfirmation = "http://localhost:8080/vsan/myprofileapp/confirm-your-account/user-"+idUser; 
 				
 				emailModel.put("link", linkConfirmation);
 				emailModel.put("name", freshUser.getName());
@@ -101,6 +102,7 @@ public class RegistrationService {
 		
 		if(userLink.isPresent()) {
 			registeredUser.setEnabled(true);
+			repository.save(registeredUser);
 			log.info("User registration enabled!", idUserLink);
 			redAtt.addFlashAttribute("userEnabled", "Complimenti! Adesso sei parte della community. Effettua il login con le credenziali usate in fase di registrazione.");
 		} else {

@@ -55,6 +55,15 @@
               </ul>
               <!--Alert-->
 			  <div
+                id="alertLoginFailed"
+                class="alert card-panel red lighten-2"
+                role="alert"
+                th:text="${loginFailed}"
+                th:if="${loginFailed}"
+              > [[${loginFailed}]]
+                  <i class="material-icons left white-text">warning</i>
+              </div>
+			  <div
                 id="alertUserEnabled"
                 class="alert card-panel light-green lighten-2"
                 role="alert"
@@ -102,19 +111,19 @@
               <!--/Alert-->
 
               <!--FORM LOGIN-->
-              <div href="login" id="login">
+              <div id="login">
                 <form th:action="@{/vsan/myprofileapp/login}" th:method="POST">
                   <div class="row">
                     <div class="input-field col s10">
                       <i class="material-icons prefix teal-text">email</i>
-                      <input id="email" type="email" class="validate" name ="email" data-length="10" required />
+                      <input id="email" type="text" class="validate" name ="username" required />
                       <label>Email</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s10">
                       <i class="material-icons prefix teal-text">lock</i>
-                      <input id="password" type="password" name="password" class="validate" data-length="#" required/>
+                      <input id="password" type="password" name="password" class="validate" required/>
                       <label>Password</label>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 package com.vsan.myprofileapp.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Getter;
@@ -37,6 +39,7 @@ public class User implements UserDetails{
 	private String email;
 	private String password;
 	private boolean isEnabled;
+	private String role;
 	@Column(name = "user_link", nullable = true)
 	private String userLink;
 //	private String profileImage; TODO: how to store images in database?
@@ -56,6 +59,7 @@ public class User implements UserDetails{
 		this.email = email;
 		this.password = password;
 		this.isEnabled = false;
+		this.role = "USER";
 		this.userPosts = new ArrayList<Post>();
 		this.requestedFriends = new ArrayList<Friendship>();
 		this.receivedFriends = new ArrayList<Friendship>();
@@ -65,7 +69,8 @@ public class User implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return null;
+		 SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
+	     return Arrays.asList(authority);
 	}
 
 

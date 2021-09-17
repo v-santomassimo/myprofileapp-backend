@@ -22,7 +22,8 @@ public class UserSecurityService implements UserDetailsService {
 		User userLoaded = null;
 		Optional<User> user = repository.findByEmail(email);
         if (user.isPresent()) {
-            return userLoaded = repository.getByEmail(email);
+        	userLoaded = repository.getByEmail(email);
+            return userLoaded;
         } else {
         	throw new UsernameNotFoundException(email);
         }
