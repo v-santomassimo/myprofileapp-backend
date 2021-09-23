@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vsan.myprofileapp.dao.User;
 import com.vsan.myprofileapp.email.EmailService;
-import com.vsan.myprofileapp.repository.AppRepository;
+import com.vsan.myprofileapp.repository.UserRepository;
 
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
@@ -22,7 +22,7 @@ import lombok.extern.log4j.Log4j2;
 public class RegistrationService {
 	
 	@Autowired
-	private AppRepository repository;
+	private UserRepository repository;
 	
 	@Autowired
 	private EmailService email;

@@ -30,18 +30,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/vsan/myprofileapp/registerUser").permitAll() //URL che consuma il RegistrationService
 			.antMatchers("/vsan/myprofileapp/registration").anonymous() //URL accesso alla pagina di registrazione;
 			.antMatchers("/vsan/myprofileapp/confirm-your-account/*").permitAll()
-			.antMatchers("/templates/*").permitAll()
-			.antMatchers("/static/css/*", "/static/js/*", "/static/img/*").permitAll()
-			.antMatchers("/vsan/myprofileapp/account/home").hasRole("USER")
+//			.antMatchers("/templates/*").permitAll()
+//			.antMatchers("/static/css/*", "/static/js/*", "/static/img/*").permitAll()
+			.antMatchers("/vsan/myprofileapp/myaccount/home").hasAnyAuthority("USER")
 //			.anyRequest().authenticated() //--> se lo aggiungo, non riesco ad accedere se non faccio il login;
 			.and()
-			.formLogin().loginPage("/vsan/myprofileapp/login")
-			//.loginProcessingUrl("/perform_login") //url che effettua l'azione del login di default è "/login";
-		    .defaultSuccessUrl("/vsan/myprofileapp/account/home")
+			.formLogin().loginPage("/vsan/myprofileapp/loginpage")
+			.loginProcessingUrl("/vsan/myprofileapp/login") //url che effettua l'azione del login di default è "/login";
+		    .defaultSuccessUrl("/vsan/myprofileapp/myaccount/home", true)
 			.failureUrl("/vsan/myprofileapp/login-error") //landing page per login fallito;
 			.and()
-			.logout().invalidateHttpSession(true)
-			.logoutUrl("/perform_logout")
+			.logout().invalidateHttpSession(true).deleteCookies("JSESSIONID")
+			.logoutUrl("/vsan/myprofileapp/myaccount/perform_logout")
 			.clearAuthentication(true).permitAll();
 	}
 
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.authenticationProvider(daoAuthenticationProvider());
+		auth.authenticationProvider(daoAuthenticationProvider());
 		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
 	}
 	

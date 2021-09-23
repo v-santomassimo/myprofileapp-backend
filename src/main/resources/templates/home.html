@@ -84,7 +84,7 @@
     </nav>
     <!--/NAVBAR-->
 
-    <div class="container overflow-hidden">
+    <div th:object = "${user}" class="container overflow-hidden">
       <div class="row justify-content-center">
         <div
           class="
@@ -98,11 +98,8 @@
               alt="profileUserImg"
               src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
             />
-            <p id="userName">Nome Utente</p>
-
-            <p class="mb-5">
-              Flex lines are filled with items and placed into the container.
-            </p>
+            <p id="userName" th:text="${user.name + ' ' + user.lastname}" class= "title is-4 teal-text"></p>
+            <p id="userEmail" th:text="${user.email}" class="mb-5 subtitle is-6 black-text"></p>
           </div>
         </div>
         <div
@@ -111,15 +108,20 @@
             justify-content-center
           "
         >
+		<!-- FORM POST-->
           <div class="card mb-4">
             <div class="card-header">Scrivi post</div>
-            <form action="">
+            <form id = "postForm" 
+				  th:action="@{/vsan/myprofileapp/myaccount/home/new-post}"
+				  th:method = "POST"
+				  th:object = "${post}">
               <div class="input-field col s12">
                 <textarea
                   id="newPost"
                   class="materialize-textarea"
                   type="text"
                   placeholder="A cosa stai pensando?"
+				  th:field="*{postContent}"
                 ></textarea>
                 <button
                   class="btn waves-effect waves-light"
@@ -140,46 +142,31 @@
               </div>
             </form>
           </div>
-          <div class="col-12">
+		<!--/ FORM POST-->
+		
+		<!-- CONTENITORE POSTS-->
+          <div class="col-12" th:switch="${userPosts}">
+			<p th:case="null">Non ci sono post!</p>
             <!--Post-->
-            <div class="card mb-4">
-              <p id="friendNamePost" text="Friend Name">
-                <img
-                  id="profileimg-friendpost"
-                  alt="profileUserImg"
-                  src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
-                />
-                Friend Name
-              </p>
-              <div class="ml-5 mr-5">
-                Flex lines are filled with items and placed into the container
-                starting on the cross-start side of the flex container and going
-                toward the cross-end side.
-              </div>
-              <div class="card-footer"></div>
-            </div>
+			<div th:case="*">
+				<div th:each="post : ${userPosts}">
+            		<div class="card mb-4">
+              			<p id="friendNamePost" class = "subtitle is-5 has-text-weight-medium" th:text="${post.author.name + ' ' + post.author.lastname}">
+ 
+              			</p>
+              		<div class="ml-5 mr-5 has-text-weight-semibold" th:text = "${post.postContent}">
+						<p id = "creationDate" th:text = "${post.creationDate}" class = "subtitle is-5 has-text-weight-medium teal-text"></p>
+              		</div>
+              		<div id="buttons" class="card-footer">
+                		<button class="waves-effect waves-light btn-small">
+                  		<i class="material-icons right white-text"> thumb_up </i> Mi
+                  			Piace
+                		</button>
+              		</div>
+            	</div>
             <!--Post-->
-            <div class="card mb-4">
-              <p id="friendNamePost" text="Friend Name">
-                <img
-                  id="profileimg-friendpost"
-                  alt="profileUserImg"
-                  src="https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg"
-                />
-                Friend Name
-              </p>
-              <div class="ml-5 mr-5">
-                Flex lines are filled with items and placed into the container
-                starting on the cross-start side of the flex container and going
-                toward the cross-end side.
-              </div>
-              <div id="buttons" class="card-footer">
-                <button class="waves-effect waves-light btn-small">
-                  <i class="material-icons right white-text"> thumb_up </i> Mi
-                  Piace
-                </button>
-              </div>
-            </div>
+			</div>
+          	</div>
           </div>
         </div>
       </div>

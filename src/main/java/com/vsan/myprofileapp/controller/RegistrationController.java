@@ -39,11 +39,6 @@ public class RegistrationController {
 		return "login.html";
 	}
 	
-	@GetMapping("/account/home")
-	public String getHomePage(Model model) {
-		//model.addAttribute("user", new User()); 
-		return "home.html";
-	}
 	
 	@PostMapping("/registerUser")
 	public String registration(@ModelAttribute("user") User newUser, RedirectAttributes redirAtt) { //l'oggetto vuoto che ho passato con la "get" request, viene riempito qui;

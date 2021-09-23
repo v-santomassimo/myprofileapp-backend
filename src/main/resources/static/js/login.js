@@ -18,3 +18,7 @@ $("#registrationForm").submit(function(){
     $("#overlay").fadeIn(500);
     $("#boxLoader").fadeIn(500);
 });  
+$("#loginForm").submit(function(){
+    $("#overlay").fadeIn(500);
+    $("#boxLoader").fadeIn(500);
+});

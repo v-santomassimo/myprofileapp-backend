@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class User implements UserDetails{
 	@Column(name = "user_link", nullable = true)
 	private String userLink;
 //	private String profileImage; TODO: how to store images in database?
-	@OneToMany(mappedBy = "author")
+	@OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
 	private List<Post> userPosts;
 	@OneToMany(mappedBy = "userSender") 
 	private List<Friendship> requestedFriends;
@@ -79,27 +80,32 @@ public class User implements UserDetails{
 	public String getUsername() {
 		return email;
 	}
-
-
+	
+	@Override
+	public String getPassword() {
+		return password;
+	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return true;
 	}
 
 
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return true;
 	}
 
 
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return true;
 	}
+
+
 	
 	
 	

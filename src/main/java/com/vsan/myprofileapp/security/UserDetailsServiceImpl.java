@@ -9,13 +9,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.vsan.myprofileapp.dao.User;
-import com.vsan.myprofileapp.repository.AppRepository;
+import com.vsan.myprofileapp.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Autowired
-	private AppRepository repository;
+	private UserRepository repository;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
