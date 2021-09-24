@@ -1,8 +1,6 @@
 package com.vsan.myprofileapp.controller;
 
 
-import java.util.Collections;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,7 +34,7 @@ public class AccountController {
 		model.addAttribute("user", userLogged); 
 		model.addAttribute("post", new Post()); //passo un oggetto Post vuoto per poter creare post dalla home;
 		model.addAttribute("userPosts", postRepo.findByAuthor(userLogged));
-		return "home.html";
+		return "home2.html";
 		
 		
 		
