@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.vsan.myprofileapp.dao.User;
+import com.vsan.myprofileapp.bean.User;
 import com.vsan.myprofileapp.email.EmailService;
 import com.vsan.myprofileapp.repository.UserRepository;
 

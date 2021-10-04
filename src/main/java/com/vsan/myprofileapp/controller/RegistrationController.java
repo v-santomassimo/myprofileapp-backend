@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.vsan.myprofileapp.dao.User;
+import com.vsan.myprofileapp.bean.User;
 import com.vsan.myprofileapp.service.RegistrationService;
 
 

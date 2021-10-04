@@ -1,6 +1,19 @@
 $(window).on("load", function() {
     "use strict";
 
+
+//OVERLAY CARICAMENTO per LOGOUT (NON Funziona)
+//function callOverlay(){
+//	$("#overlay").fadeIn(500);
+//    $("#boxLoader").fadeIn(500);
+//}
+
+
+//OVERLAY CARICAMENTO POST
+$("#postForm").submit(function(){
+    $("#overlay").fadeIn(500);
+    $("#boxLoader").fadeIn(500);
+});  
     
 
     //  ============= POST PROJECT POPUP FUNCTION =========

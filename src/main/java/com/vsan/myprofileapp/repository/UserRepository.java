@@ -1,7 +1,8 @@
 package com.vsan.myprofileapp.repository;
 
 import org.springframework.stereotype.Repository;
-import com.vsan.myprofileapp.dao.User;
+
+import com.vsan.myprofileapp.bean.User;
 
 import java.util.Optional;
 

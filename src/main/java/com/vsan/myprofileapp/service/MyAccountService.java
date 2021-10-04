@@ -1,15 +1,18 @@
 package com.vsan.myprofileapp.service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.vsan.myprofileapp.dao.Post;
-import com.vsan.myprofileapp.dao.User;
+import com.vsan.myprofileapp.bean.Post;
+import com.vsan.myprofileapp.bean.User;
 import com.vsan.myprofileapp.repository.PostRepository;
 import com.vsan.myprofileapp.repository.UserRepository;
 
@@ -20,31 +23,66 @@ import lombok.extern.log4j.Log4j2;
 public class MyAccountService {
 	
 	@Autowired
-	private PostRepository repository;
+	private PostRepository postRepo;
+	@Autowired
+	private UserRepository userRepo;
 	
 	
 	public void addPost(Post newPost) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE dd MMMM y, HH:mm");
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE dd MMMM y, HH:mm");
 		LocalDateTime creationDate = LocalDateTime.now(); 
-		String dateCreation = creationDate.format(formatter);
-		
-		log.info(dateCreation);
+		//String dateCreation = creationDate.format(formatter);
+		Instant instant;
+		instant = creationDate.toInstant(ZoneOffset.UTC);
+		Date date = Date.from(instant);
 		
 		//setto la data di creazione del post;
-		newPost.setCreationDate(dateCreation);
+		newPost.setCreationDate(date);
+		log.info(creationDate);
+		
 		//recupero l'utente loggato;
 		User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
 		
 		//salvo l'autore del post;
 		newPost.setAuthor(loggedUser);
-		
+		newPost.setNumberLikes("0");
 		//salvo il post nell?utente loggato
 		loggedUser.getUserPosts().add(newPost);
 		
 		//salvo il post sul db;
-		repository.save(newPost);
+		postRepo.save(newPost);
 		log.info("Post added correctly!");
 		
+	}
+	
+	public void deletePost(Long id) {
+		Optional<Post> postIsThere = postRepo.findById(id);
+		if(postIsThere.isPresent()) {
+			postRepo.deleteById(id);
+		} else {
+			log.info("Post id: "+id+ " doesn't exist.");
+		}
+	}
+	
+	
+	public void likeThisPost(Long id) {
+		Integer likes = 0;
+		Post post = postRepo.findByPostId(id);
+		
+		if(post.getNumberLikes().equals("0")) {
+			likes = Integer.parseInt(post.getNumberLikes());
+			likes++;
+			post.setNumberLikes(String.valueOf(likes));
+			postRepo.save(post);
+		} else if(post.getNumberLikes().equals("1")) {
+			post.setNumberLikes("0");
+			postRepo.save(post);
+		}
+		
+	}
+	
+	public List<User> getAllUsers(){
+		return userRepo.findAll();
 	}
 	
 

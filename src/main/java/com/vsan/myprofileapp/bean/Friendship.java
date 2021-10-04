@@ -1,4 +1,4 @@
-package com.vsan.myprofileapp.dao;
+package com.vsan.myprofileapp.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

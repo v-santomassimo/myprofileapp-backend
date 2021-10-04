@@ -1,4 +1,6 @@
-package com.vsan.myprofileapp.dao;
+package com.vsan.myprofileapp.bean;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,15 +25,17 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long postId;
 	private String postContent;
-	private String creationDate;
-	private String updateDate;
+//	private String creationDate;
+//	private String updateDate;
+	private Date creationDate;
+	private Date updateDate;
 	private String numberLikes;
 	@ManyToOne
 	@JoinColumn(name = "userId", nullable = false)
 	private User author;
 	
 	
-	public Post(String postContent, String creationDate, String updateDate, String numberLikes, User author) {
+	public Post(String postContent, Date creationDate, Date updateDate, String numberLikes, User author) {
 		this.postContent = postContent;
 		this.creationDate = creationDate;
 		this.updateDate = updateDate;
