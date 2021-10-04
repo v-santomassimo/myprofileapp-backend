@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>WorkWise Html Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/flatpickr.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/line-awesome.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/line-awesome-font-awesome.min.css}">
+	<!--<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">-->
+	<link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/slick.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/slick-theme.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<!--Icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+	
+	<!-- FAVICON -->
+    <link
+      rel="icon"
+      href="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
+      type="image/png"
+    />
+
+</head>
+
+<body>
+	<div class="wrapper">
+      <header th:object = "${user}">
+        <div class="container">
+          <div class="header-data">
+            <div class="logo">
+              <a th:href="@{/vsan/myprofileapp/myaccount/home}" title=""
+                ><img
+                  src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
+              /></a>
+            </div>
+            <div class="search-bar">
+              <form id = "searchForm" 
+				    th:action="@{/vsan/myprofileapp/myaccount/home/search-it}"
+				    th:method = "POST"
+				    th:object = "${searchForm}">
+                <input type="text" name="search" placeholder="Cerca..."  th:field="*{searchString}"/>
+                <button type="submit">
+                  <i class="small material-icons">search</i>
+                </button>
+              </form>
+            </div>
+            <nav>
+              <ul>
+                <li>
+                  <a th:href="@{/vsan/myprofileapp/myaccount/home}" title="">
+                    <span
+                      ><i class="small material-icons white-text mb-small"
+                        >home</i
+                      ></span
+                    >
+                  </a>
+                </li>
+
+                <li>
+                  <a href="profiles.html" title="">
+                    <span
+                      ><i class="small material-icons white-text"
+                        >person</i
+                      ></span
+                    >
+                  </a>
+                  <ul>
+                    <li>
+                      <a href="user-profile.html" title="">User Profile</a>
+                    </li>
+                    <li>
+                      <a href="my-profile-feed.html" title=""
+                        >my-profile-feed</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a href="#" title="notificationButton" class="not-box-open">
+                    <span
+                      ><i class="small material-icons white-text"
+                        >notifications</i
+                      ></span
+                    >
+					<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    					99+
+                  </a>
+                  <div class="notification-box noti" id="notification">
+                    <div class="nt-title">
+                      <h4>Setting</h4>
+                      <a href="#" title="">Clear all</a>
+                    </div>
+                    <div class="nott-list">
+                      <div class="notfication-details">
+                        <div class="noty-user-img">
+                          <img th:src="@{/images/resources/ny-img1.png}" alt="" />
+                        </div>
+                        <div class="notification-info">
+                          <h3>
+                            <a href="#" title="">Jassica William</a> Comment on
+                            your project.
+                          </h3>
+                          <span>2 min ago</span>
+                        </div>
+                      </div>
+                      <div class="notfication-details">
+                        <div class="noty-user-img">
+                          <img th:src="@{/images/resources/ny-img2.png}" alt="" />
+                        </div>
+                        <div class="notification-info">
+                          <h3>
+                            <a href="#" title="">Jassica William</a> Comment on
+                            your project.
+                          </h3>
+                          <span>2 min ago</span>
+                        </div>
+                      </div>
+                      <div class="notfication-details">
+                        <div class="noty-user-img">
+                          <img th:src="@{/images/resources/ny-img3.png}" alt="" />
+                        </div>
+                        <div class="notification-info">
+                          <h3>
+                            <a href="#" title="">Jassica William</a> Comment on
+                            your project.
+                          </h3>
+                          <span>2 min ago</span>
+                        </div>
+                      </div>
+                      <div class="notfication-details">
+                        <div class="noty-user-img">
+                          <img th:src="@{/images/resources/ny-img2.png}" alt="" />
+                        </div>
+                        <div class="notification-info">
+                          <h3>
+                            <a href="#" title="">Jassica William</a> Comment on
+                            your project.
+                          </h3>
+                          <span>2 min ago</span>
+                        </div>
+                      </div>
+                      <div class="view-all-nots">
+                        <a href="#" title="">Vedi tutte le notifiche</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+            <div class="menu-btn">
+              <a href="#" title=""><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="user-account">
+              <div class="user-info">
+                <img th:src="@{/images/resources/user.png}" alt="" />
+                <a href="#" th:text = "${user.name}"></a>
+                <i class="material-icons white-text">arrow_drop_down</i>
+              </div>
+              <div class="user-account-settingss" id="users">
+                <h3>Online Status</h3>
+                <ul class="on-off-status">
+                  <li>
+                    <div class="fgt-sec">
+                      <input type="radio" name="cc" id="c5" />
+                      <label for="c5">
+                        <span></span>
+                      </label>
+                      <small>Online</small>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="fgt-sec">
+                      <input type="radio" name="cc" id="c6" />
+                      <label for="c6">
+                        <span></span>
+                      </label>
+                      <small>Offline</small>
+                    </div>
+                  </li>
+                </ul>
+                <h3>Custom Status</h3>
+                <div class="search_form">
+                  <form>
+                    <input type="text" name="search" />
+                    <button type="submit">Ok</button>
+                  </form>
+                </div>
+                <h3>Impostazioni</h3>
+                <ul class="us-links">
+                  <li>
+                    <a href="profile-account-setting.html" title=""
+                      >Account Setting</a>  
+                  </li>
+                  
+                </ul>
+                <h3 class="tc"><a th:href="@{/vsan/myprofileapp/myaccount/perform_logout}" class="text-danger" id ="logoutButton" onclick = "callOverlay();">Logout</a></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+	<!--/ NAVBAR-->
+	
+		<section class="companies-info">
+			<div class="container">
+				<div class="company-title">
+					<h3>Risultati ricerca</h3>
+				</div>
+			<div  th:if="${#lists.isEmpty(searchResults)}" class="companies-list col-lg-12 col-md-4 col-sm-6 col-12">
+				<!--immagine no post-->
+					<div class="company_profile_info">
+						<img id="imgNoResults" style = "object-fit: fill; display: block;" 
+							src = "https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?compress=1&resize=400x300" alt=""/>	
+					</div>
+			</div>
+			<div  th:unless="${#lists.isEmpty(searchResults)}">
+				<div class="companies-list">
+					<div class="row">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div th:each="result : ${searchResults}" class="company_profile_info">
+								<div class="company-up-info">
+									<img th:src="@{/images/resources/pf-icon1.png}" alt="">
+									<h3 th:text="${result.name + ' ' + result.lastname}"></h3>
+									<h4 th:text="${result.email}"></h4>
+									<ul>
+										<li><a href="#" title="" class="follow">Aggiungi</a></li>
+									</ul>
+								</div>
+								<a href="user-profile.html" title="" class="view-more-pro">Vedi Profilo</a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="footy-sec mn no-margin">
+				<div class="container">
+					<ul>
+						<li><a href="help-center.html" title="">Help Center</a></li>
+						<li><a href="about.html" title="">About</a></li>
+						<li><a href="#" title="">Privacy Policy</a></li>
+						<li><a href="#" title="">Community Guidelines</a></li>
+						<li><a href="#" title="">Cookies Policy</a></li>
+						<li><a href="#" title="">Career</a></li>
+						<li><a href="forum.html" title="">Forum</a></li>
+						<li><a href="#" title="">Language</a></li>
+						<li><a href="#" title="">Copyright Policy</a></li>
+					</ul>
+					<p><img src="images/copy-icon2.png" alt="">Copyright 2021</p>
+					<img class="fl-rgt" src="images/logo2.png" alt="">
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/popper.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/flatpickr.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/slick.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+
+</html>

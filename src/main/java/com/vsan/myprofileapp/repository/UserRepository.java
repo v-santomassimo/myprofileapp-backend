@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.vsan.myprofileapp.bean.User;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,4 +23,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	@Query("SELECT u FROM User u WHERE u.email = :email")
 	User getByEmail(@Param("email") String email);
+	
+	List<User> findByName(String name);
+	
+	List<User> findByLastname(String lastname);
+	
+	@Query("SELECT u FROM User u WHERE u.name = :name OR u.lastname = :lastname OR u.email = :email")
+	List<User> findUser(String name, String lastname, String email);
 }

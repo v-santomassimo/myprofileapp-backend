@@ -153,7 +153,7 @@ input {
 textarea {
   outline: none;
 }
-.textarea-post {
+.textarea-post {	
   outline: none;
   border-color: transparent;
 }
@@ -162,9 +162,12 @@ section {
   width: 100%;
   position: relative;
 }
+
 img {
   float: left;
 }
+
+
 p {
   font-size: 14px;
   line-height: 24px;
@@ -3552,6 +3555,13 @@ a:hover {
   font-weight: 500;
   padding: 18px 0;
 }
+
+.company_profile_info > img {
+	text-align: center;
+	display: block; 
+	margin: 0 auto;
+}
+
 .search-sec {
   float: left;
   width: 100%;

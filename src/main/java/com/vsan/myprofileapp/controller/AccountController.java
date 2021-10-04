@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.vsan.myprofileapp.bean.Post;
+import com.vsan.myprofileapp.bean.SearchForm;
 import com.vsan.myprofileapp.bean.User;
 import com.vsan.myprofileapp.repository.PostRepository;
 import com.vsan.myprofileapp.service.MyAccountService;
@@ -68,6 +71,7 @@ public class AccountController {
 		model.addAttribute("user", userLogged); 
 		model.addAttribute("post", new Post()); //passo un oggetto Post vuoto per poter creare post dalla home;
 		model.addAttribute("userPosts", userPosts);
+		model.addAttribute("searchForm", new SearchForm());
 		
 		return "home2.html";
 		
@@ -78,7 +82,6 @@ public class AccountController {
 	public String addNewPost(@ModelAttribute("post") Post newPost) {
 		service.addPost(newPost);
 		return "redirect:/vsan/myprofileapp/myaccount/home";
-		
 	}
 	
 	@GetMapping("/home/delete-post/{id}")
@@ -97,5 +100,24 @@ public class AccountController {
 		service.likeThisPost(id);
 		return "redirect:/vsan/myprofileapp/myaccount/home";
 	}
+	
+	@PostMapping("/home/search-it")
+	public String searchUser(@ModelAttribute("searchResults") SearchForm form, Model model) {
+		List<User> results = service.searchForUsers(form.getSearchString());
+		User userLogged = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("user", userLogged);
+		model.addAttribute("searchResults", results);
+		model.addAttribute("searchForm", new SearchForm());
+		return "searchResults.html";
+	}
+	
+//	@GetMapping("/home/search-results")
+//	public String getSearchResultsPage(Model model) {
+//		User userLogged = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+//		List<User> results = (List<User>) model.getAttribute("results");
+//		model.addAttribute("user", userLogged);
+//		model.addAttribute("searchResults", results);
+//		return "searchResults.html";
+//	}
 
 }

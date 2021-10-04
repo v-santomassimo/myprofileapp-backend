@@ -85,5 +85,28 @@ public class MyAccountService {
 		return userRepo.findAll();
 	}
 	
+	public List<User> getAllUsersByName(String name){
+		return userRepo.findByName(name);
+	}
+	
+	public List<User> getAllUsersByLastname (String lastname){
+		return userRepo.findByLastname(lastname);
+	}
 
+	public User getUserByEmail (String email){
+		return userRepo.getByEmail(email);
+	}
+	
+	public List<User> searchForUsers(String search){
+		search = search.trim().substring(0, 1).toUpperCase() + search.substring(1);
+		String [] searchWords = search.split("\\s+");
+		if(searchWords.length > 0 && searchWords.length >= 3) {
+			return userRepo.findUser(searchWords[0], searchWords[1], searchWords[2]);
+		} else {
+			return userRepo.findUser(searchWords[0], searchWords[0], searchWords[0]);
+		}
+		
+	}
+	
+	
 }

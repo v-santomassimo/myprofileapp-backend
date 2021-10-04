@@ -51,14 +51,17 @@
         <div class="container">
           <div class="header-data">
             <div class="logo">
-              <a href="index.html" title=""
+              <a href="#" title=""
                 ><img
                   src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/512/system-users-icon.png"
               /></a>
             </div>
             <div class="search-bar">
-              <form>
-                <input type="text" name="search" placeholder="Cerca..." />
+              <form id = "searchForm" 
+				    th:action="@{/vsan/myprofileapp/myaccount/home/search-it}"
+				    th:method = "POST"
+				    th:object = "${searchForm}">
+                <input type="text" name="search" placeholder="Cerca..."  th:field="*{searchString}"/>
                 <button type="submit">
                   <i class="small material-icons">search</i>
                 </button>
@@ -272,50 +275,10 @@
                           	<img th:src="@{/images/resources/s1.png}" alt="" />
                           	<div class="sgt-text">
                             	<h4 th:text="${userSuggested.name +' '+ userSuggested.lastname}"></h4>
-                            	<span th:text="${userSuggested.email}"></span>
+                            	<span style="font-size: x-small;" th:text="${userSuggested.email}"></span>
                           	</div>
                           	<span><i class="material-icons">add</i></span>
                        	</div>
-                        <!--<div class="suggestion-usd">
-                          <img th:src="@{/images/resources/s2.png}" alt="" />
-                          <div class="sgt-text">
-                            <h4>John Doe</h4>
-                            <span>PHP Developer</span>
-                          </div>
-                          <span><i class="material-icons">add</i></span>
-                        </div>
-                        <div class="suggestion-usd">
-                          <img th:src="@{/images/resources/s3.png}" alt="" />
-                          <div class="sgt-text">
-                            <h4>Poonam</h4>
-                            <span>Wordpress Developer</span>
-                          </div>
-                          <span><i class="material-icons">add</i></i></span>
-                        </div>
-                        <div class="suggestion-usd">
-                          <img th:src="@{/images/resources/s4.png}" alt="" />
-                          <div class="sgt-text">
-                            <h4>Bill Gates</h4>
-                            <span>C & C++ Developer</span>
-                          </div>
-                          <span><i class="material-icons">add</i></i></span>
-                        </div>
-                        <div class="suggestion-usd">
-                          <img src="images/resources/s5.png" alt="" />
-                          <div class="sgt-text">
-                            <h4>Jessica William</h4>
-                            <span>Graphic Designer</span>
-                          </div>
-                          <span><i class="material-icons">add</i></i></span>
-                        </div>
-                        <div class="suggestion-usd">
-                          <img src="images/resources/s6.png" alt="" />
-                          <div class="sgt-text">
-                            <h4>John Doe</h4>
-                            <span>PHP Developer</span>
-                          </div>
-                          <span><i class="material-icons">add</i></i></span>
-                        </div>-->
                       </div>
                         <div class="view-more">
                           <a href="#" title="">View More</a>
@@ -389,7 +352,7 @@
                     <div  th:if="${#lists.isEmpty(userPosts) and latestUserPost == null}" class="posts-section">
 						<!--immagine no post-->
 							<div class="post-topbar">
-								<img style = "object-fit: fill; display: block; position: relative; margin: auto;" 
+								<img id="imgNoPosts" style = "object-fit: fill; display: block; position: relative; margin: auto;" 
 									src = "https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?compress=1&resize=400x300" alt=""/>
 								<h1 ></h1>
 							</div>
@@ -486,7 +449,7 @@
                         </div>
 					<!--Barra Likes-->
                       </div>
-
+						
 					</div>
 				  	</div>
 				 </div>
@@ -499,9 +462,9 @@
                         <div class="profiles-slider">
 							<div th:each = "userSuggested : ${friendsSuggested}">
                           		<div class="user-profy">
-                            		<img th:src="@{images/resources/user1.png}" alt="" />
+                            		<img th:src="@{/images/resources/user1.png}" alt="" />
                             		<h3 th:text="${userSuggested.name + ' ' + userSuggested.lastname}"></h3>
-                            		<span th:text="${userSuggested.email}"></span>
+                            		<span style="font-size: x-small;" th:text="${userSuggested.email}"></span>
                             		<ul>
                               			<li>
                                 			<a href="#" title="" class="followw">Aggiungi</a>
@@ -510,25 +473,6 @@
                             		<a href="#" title="">Vedi Profilo</a>
                          		 </div>
 							</div>
-                          	<div class="user-profy">
-                            	<img src="images/resources/user2.png" alt="" />
-                            	<h3>John Doe</h3>
-                            	<span>Graphic Designer</span>
-                            	<ul>
-                              		<li>
-                                		<a href="#" title="" class="followw">Follow</a>
-                              		</li>
-                              		<li>
-                                		<a href="#" title="" class="envlp"
-                                  		><img src="images/envelop.png" alt=""
-                                		/></a>
-                              		</li>
-                              		<li>
-                                		<a href="#" title="" class="hire">hire</a>
-                              		</li>
-                            	</ul>
-                            	<a href="#" title="">View Profile</a>
-                          	</div>
                           <!--<div class="user-profy">
                             <img src="images/resources/user3.png" alt="" />
                             <h3>John Doe</h3>
@@ -607,6 +551,7 @@
                           </div>-->
                         </div>
                       </div>
+					
 					<!--/SUGGERIMENTI AMICIZIA CENTRO-->
 					
 					<!--SECONDO CONTENITORE POST PER AMICI-->
@@ -698,6 +643,7 @@
                         </div>
 					<!--Barra Likes-->
                       </div>
+                </div>
                       <div class="posty">
                         <!--<div class="post-bar no-margin">
                           <div class="post_topbar">
@@ -972,8 +918,8 @@
                             <span>$25/hr</span>
                           </div>
                         </div>
-                      </div>
-                    </div>-->
+                      </div>-->
+                    </div>
                     <!--<div class="widget widget-jobs">
                       <div class="sd-title">
                         <h3>Most Viewed This Week</h3>
@@ -1079,6 +1025,7 @@
                     </div>-->
                   </div>
                 </div>
+          
               </div>
             </div>
           </div>
