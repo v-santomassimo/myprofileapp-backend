@@ -16,10 +16,10 @@ public class NewFriendController {
 	@Autowired
 	private NewFriendServices service;
 	
-	@GetMapping("/add-friend/receiver={idreceiver}")
-	public String addFriend(@PathVariable("idreceiver") String idReceiver, RedirectAttributes att) {
-		service.addFriend(idReceiver, att);
-		return "redirect:/vsan/myprofileapp/myaccount/home";
-	}
+//	@GetMapping("/add-friend/receiver={idreceiver}")
+//	public String addFriend(@PathVariable("idreceiver") String idReceiver, RedirectAttributes att) {
+//		service.addFriend(idReceiver, att);
+//		return "redirect:/vsan/myprofileapp/myaccount/home";
+//	}
 
 }

@@ -30,30 +30,30 @@ public class NewFriendServices {
 	 * 
 	 */
 	
-	public void addFriend(String idReceiver, RedirectAttributes rdrAtt) {
-		Friendship newRequest = new Friendship();
-		User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
-		User receiver = userRepo.findByUserId(Long.valueOf(idReceiver));
-		LocalDateTime creationDate = LocalDateTime.now();
-		Instant instant;
-		instant = creationDate.toInstant(ZoneOffset.UTC);
-		Date date = Date.from(instant);
-		
-		newRequest.setAcceptingDate(date);
-		newRequest.setUserSender(loggedUser);
-		newRequest.setUserReceiver(receiver);
-		
-		friendRepo.save(newRequest);
-		
-		//User sender = userRepo.findByUserId(loggedUser.getUserId());
-		Notification notification = new Notification(date, loggedUser.getName() + " ti ha inviato una richiesta di amicizia", "");
-		loggedUser.setNotifications(notification);
-		userRepo.save(loggedUser);
-		
-		rdrAtt.addFlashAttribute("friendshipRequestSended", "Hai inviato una richiesta di amicizia a " + receiver.getName() + " " + receiver.getLastname());
-		//rdrAtt.addFlashAttribute("newFriendNotification", notification);
-		
-	}
+//	public void addFriend(String idReceiver, RedirectAttributes rdrAtt) {
+//		Friendship newRequest = new Friendship();
+//		User loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();	
+//		User receiver = userRepo.findByUserId(Long.valueOf(idReceiver));
+//		LocalDateTime creationDate = LocalDateTime.now();
+//		Instant instant;
+//		instant = creationDate.toInstant(ZoneOffset.UTC);
+//		Date date = Date.from(instant);
+//		
+//		newRequest.setAcceptingDate(date);
+//		newRequest.setUserSender(loggedUser);
+//		newRequest.setUserReceiver(receiver);
+//		
+//		friendRepo.save(newRequest);
+//		
+//		//User sender = userRepo.findByUserId(loggedUser.getUserId());
+//		Notification notification = new Notification(date, loggedUser.getName() + " ti ha inviato una richiesta di amicizia", "");
+//		loggedUser.setNotifications(notification);
+//		userRepo.save(loggedUser);
+//		
+//		rdrAtt.addFlashAttribute("friendshipRequestSended", "Hai inviato una richiesta di amicizia a " + receiver.getName() + " " + receiver.getLastname());
+//		//rdrAtt.addFlashAttribute("newFriendNotification", notification);
+//		
+//	}
 	
 	//accettare richiesta amicizia:
 	/* cliccare sulla notifica: se isApproved è falso, allora lo setto a true e aggiungo l'utente alla lista di amici dell'utente loggato;

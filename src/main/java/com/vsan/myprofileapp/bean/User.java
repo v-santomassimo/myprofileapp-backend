@@ -51,8 +51,8 @@ public class User implements UserDetails{
 	@OneToMany(mappedBy = "userReceiver") 
 	private List<Friendship> receivedFriends;
 	private String registrationDate;
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-	private List<Notification> notifications;
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//	private List<Notification> notifications;
 	
 	
 	
@@ -66,7 +66,7 @@ public class User implements UserDetails{
 		this.userPosts = new ArrayList<Post>();
 		this.requestedFriends = new ArrayList<Friendship>();
 		this.receivedFriends = new ArrayList<Friendship>();
-		this.notifications = new ArrayList<Notification>();
+//		this.notifications = new ArrayList<Notification>();
 	}
 
 
@@ -101,9 +101,9 @@ public class User implements UserDetails{
 		return true;
 	}
 
-	public void setNotifications(Notification n) {
-		this.notifications.add(n);
-	}
+//	public void setNotifications(Notification n) {
+//		this.notifications.add(n);
+//	}
 	
 	
 	
