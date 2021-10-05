@@ -8,40 +8,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "post")
-@NoArgsConstructor
 @Getter
 @Setter
-public class Post {
+@NoArgsConstructor
+@Entity
+public class Notification {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long postId;
-	private String postContent;
-	private Date creationDate;
-	private Date updateDate;
-	private String numberLikes;
+	private Long notificationId;
 	@ManyToOne
 	@JoinColumn(name = "userId", nullable = false)
-	private User author;
+	private User user;
+	private Date creationDate;
+	private String message;
+	private String evento; //richiesta di amicizia, likes, ecc; mi riporta al profilo della persona oppure al post;
+	private boolean isSeen;
+
 	
-	
-	public Post(String postContent, Date creationDate, Date updateDate, String numberLikes, User author) {
-		this.postContent = postContent;
+	public Notification(Date creationDate, String message, String evento) {
 		this.creationDate = creationDate;
-		this.updateDate = updateDate;
-		this.numberLikes = numberLikes;
-		this.author = author;
+		this.message = message;
+		this.isSeen = false;
+		this.evento = evento;
 	}
-	
-	
-	
-	
 }

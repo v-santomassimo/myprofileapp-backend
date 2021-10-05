@@ -9,12 +9,19 @@ $(window).on("load", function() {
 //}
 
 
-//OVERLAY CARICAMENTO POST
+//OVERLAY CARICAMENTO POST -- non funziona
 $("#postForm").submit(function(){
     $("#overlay").fadeIn(500);
     $("#boxLoader").fadeIn(500);
 });  
     
+
+//CHANGE COLOR LIKE BUTTON -- non funziona
+$("#like-button").click(function(){
+	$(".btn.btn-light.position-relative").removeClass("btn-light").addClass("btn-primary");
+})
+
+
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 

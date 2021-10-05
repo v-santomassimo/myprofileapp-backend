@@ -54,7 +54,6 @@ public class RegistrationService {
 				
 				redirAtt.addFlashAttribute("userIsPresent", "Utente già registrato!");
 				
-				
 			} else {
 				//altrimenti, aggiungo il nuovo utente al db e invio la mail;
 				

@@ -51,6 +51,8 @@ public class User implements UserDetails{
 	@OneToMany(mappedBy = "userReceiver") 
 	private List<Friendship> receivedFriends;
 	private String registrationDate;
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Notification> notifications;
 	
 	
 	
@@ -64,8 +66,8 @@ public class User implements UserDetails{
 		this.userPosts = new ArrayList<Post>();
 		this.requestedFriends = new ArrayList<Friendship>();
 		this.receivedFriends = new ArrayList<Friendship>();
+		this.notifications = new ArrayList<Notification>();
 	}
-
 
 
 	@Override
@@ -73,8 +75,6 @@ public class User implements UserDetails{
 		 SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
 	     return Arrays.asList(authority);
 	}
-
-
 
 	@Override
 	public String getUsername() {
@@ -91,21 +91,19 @@ public class User implements UserDetails{
 		return true;
 	}
 
-
-
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
-
-
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-
+	public void setNotifications(Notification n) {
+		this.notifications.add(n);
+	}
 	
 	
 	

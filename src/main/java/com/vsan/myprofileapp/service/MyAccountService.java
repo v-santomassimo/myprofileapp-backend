@@ -98,13 +98,15 @@ public class MyAccountService {
 	}
 	
 	public List<User> searchForUsers(String search){
-		search = search.trim().substring(0, 1).toUpperCase() + search.substring(1);
-		String [] searchWords = search.split("\\s+");
-		if(searchWords.length > 0 && searchWords.length >= 3) {
-			return userRepo.findUser(searchWords[0], searchWords[1], searchWords[2]);
-		} else {
-			return userRepo.findUser(searchWords[0], searchWords[0], searchWords[0]);
-		}
+//		search = search.trim().substring(0, 1).toUpperCase() + search.substring(1);
+//		String [] searchWords = search.split("\\s+");
+//		if(searchWords.length > 0 && searchWords.length >= 3) {
+//			return userRepo.findUser(searchWords[0], searchWords[1], searchWords[2]);
+//		} else {
+//			return userRepo.findUser(searchWords[0], searchWords[0], searchWords[0]);
+//		}
+		
+		return userRepo.findUser(search);
 		
 	}
 	

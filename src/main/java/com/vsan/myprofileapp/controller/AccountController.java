@@ -2,12 +2,9 @@ package com.vsan.myprofileapp.controller;
 
 
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,7 +35,6 @@ public class AccountController {
 	
 	@GetMapping("/home")
 	public String getHomePage(Model model) {
-
 		User userLogged = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		List<Post> userPosts = postRepo.findByAuthor(userLogged);
 		List<User> friendSuggested = service.getAllUsers();
@@ -50,7 +46,6 @@ public class AccountController {
 				break;
 			}
 		}
-		
 		
 		if(userPosts.size() != 0) {
 			//riordino la lista di post per data;
@@ -74,9 +69,7 @@ public class AccountController {
 		model.addAttribute("searchForm", new SearchForm());
 		
 		return "home2.html";
-		
 	}
-	
 	
 	@PostMapping("/home/new-post")
 	public String addNewPost(@ModelAttribute("post") Post newPost) {
@@ -110,14 +103,5 @@ public class AccountController {
 		model.addAttribute("searchForm", new SearchForm());
 		return "searchResults.html";
 	}
-	
-//	@GetMapping("/home/search-results")
-//	public String getSearchResultsPage(Model model) {
-//		User userLogged = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-//		List<User> results = (List<User>) model.getAttribute("results");
-//		model.addAttribute("user", userLogged);
-//		model.addAttribute("searchResults", results);
-//		return "searchResults.html";
-//	}
 
 }

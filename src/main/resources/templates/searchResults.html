@@ -219,30 +219,30 @@
 				<div class="company-title">
 					<h3>Risultati ricerca</h3>
 				</div>
-			<div  th:if="${#lists.isEmpty(searchResults)}" class="companies-list col-lg-12 col-md-4 col-sm-6 col-12">
+				<div  th:if="${#lists.isEmpty(searchResults)}" class="companies-list col-lg-12 col-md-4 col-sm-6 col-12">
 				<!--immagine no post-->
 					<div class="company_profile_info">
 						<img id="imgNoResults" style = "object-fit: fill; display: block;" 
 							src = "https://cdn.dribbble.com/users/760295/screenshots/4433975/media/03494b209a1511a61868ced337b97931.png?compress=1&resize=400x300" alt=""/>	
 					</div>
-			</div>
-			<div  th:unless="${#lists.isEmpty(searchResults)}">
-				<div class="companies-list">
-					<div class="row">
-						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div th:each="result : ${searchResults}" class="company_profile_info">
-								<div class="company-up-info">
-									<img th:src="@{/images/resources/pf-icon1.png}" alt="">
-									<h3 th:text="${result.name + ' ' + result.lastname}"></h3>
-									<h4 th:text="${result.email}"></h4>
-									<ul>
-										<li><a href="#" title="" class="follow">Aggiungi</a></li>
-									</ul>
+				</div>
+				<div  th:unless="${#lists.isEmpty(searchResults)}">
+					<div class="companies-list">
+						<div class="row">
+							<div th:each="result : ${searchResults}" class="col-lg-3 col-md-4 col-sm-6 col-12">
+								<div class="company_profile_info">
+									<div class="company-up-info">
+										<img th:src="@{/images/resources/pf-icon1.png}" alt="">
+										<h3 th:text="${result.name + ' ' + result.lastname}"></h3>
+										<h4 th:text="${result.email}"></h4>
+										<ul>
+											<li><a href="#" title="" class="follow">Aggiungi</a></li>
+										</ul>
+									</div>
+									<a href="user-profile.html" title="" class="view-more-pro">Vedi Profilo</a>
 								</div>
-								<a href="user-profile.html" title="" class="view-more-pro">Vedi Profilo</a>
 							</div>
 						</div>
-						
 					</div>
 				</div>
 			</div>
